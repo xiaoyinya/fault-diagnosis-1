@@ -16,12 +16,12 @@ train_ttf = pd.read_csv("train/train_ttf/01_M01_DC_train.csv")
 train_faults = pd.read_csv("train/train_faults/01_M01_train_fault_data.csv")
 
 # Merge data
-merge = train.merge(train_faults, how='outer', on=['time', 'Tool'], left_on=None, right_on=None, left_index=False,
+df = train.merge(train_faults, how='outer', on=['time', 'Tool'], left_on=None, right_on=None, left_index=False,
                     right_index=False, sort=False, copy=True, indicator=False, validate=None)
-merge = merge.sort_values(by='time', ascending=True)
+df = df.sort_values(by='time', ascending=True)
 
 # Variables
-variables = merge.columns[7:23].tolist()
+variables = df.columns[7:23].tolist()
 
 # App ------------------------------------------------------------------------------------------------------------------
 app = dash.Dash(__name__)
@@ -60,7 +60,7 @@ def time_series(variable):
     upper_bound = 40567036
 
     # Get subset
-    train_n = merge[merge['time'].between(lower_bound, upper_bound, inclusive=True)]
+    train_n = df[df['time'].between(lower_bound, upper_bound, inclusive=True)]
     fault_n = train_faults[train_faults['time'].between(lower_bound, upper_bound, inclusive=True)]
 
     # Initialize
