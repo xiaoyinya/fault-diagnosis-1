@@ -4,6 +4,3 @@ venv
 .DS_Store
 Medium/
 research/
-train/
-train/01_M01_DC_train.csv
-train/train_ttf/01_M01_DC_train.csv
