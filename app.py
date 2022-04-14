@@ -6,9 +6,12 @@ import plotly.graph_objects as go
 
 # Dash
 import dash
-import dash_core_components as dcc
+# import dash_core_components as dcc
+from dash import dcc
+
 import dash.dependencies as dd
-import dash_html_components as html
+# import dash_html_components as html
+from dash import html
 
 # Import data
 train = pd.read_csv("train/01_M01_DC_train.csv")
